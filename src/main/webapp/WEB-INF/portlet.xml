@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd" version="1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd
+	http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
+	
+  <portlet>
+    <portlet-name>SympaPortlet</portlet-name>
+    <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/sympa-portlet.xml</value>
+    </init-param>
+    <init-param>
+    	<name>defaultHtmlEscape</name>
+    	<value>false</value>
+    </init-param>
+    <expiration-cache>0</expiration-cache>
+    <supports>
+      <mime-type>text/html</mime-type>
+      <portlet-mode>VIEW</portlet-mode>
+    </supports>
+    <supported-locale>fr</supported-locale>
+    <portlet-info>
+      <title>Sympa portlet</title>
+    </portlet-info>
+    <!-- supported-locale>en</supported-locale -->
+    <!-- mapping des rôles -->
+    <security-role-ref>
+    	<description>${esup.sympa.group.newListForRoles}</description>
+    	<role-name>${esup.sympa.group.newListForRoles}</role-name>
+    	<role-link>${esup.sympa.group.newListForRolesLink}</role-link>
+    </security-role-ref>
+  </portlet>
+  <!-- attribut utilisateur à faire remonter dans la portlet-->
+  <user-attribute>
+  	<name>${esup.sympa.portal.attribute.mail}</name>
+  </user-attribute>
+  <!-- le proxy ticket pour la portlet -->
+  <user-attribute>
+  	<description>get proxy ticket from portal</description>
+  	<name>${esup.sympa.portal.attribute.casProxyTicket}</name>
+  </user-attribute>
+</portlet-app>

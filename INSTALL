@@ -1,0 +1,9 @@
+
+* Modify config.properties
+
+* mvn install
+
+* from uPortal directory : 
+ant deployPortletApp -DportletApp=/opt/canaux/esup-portlet-sympa/target/esup-portlet-sympa.war
+
+* start uPortal and register the new portlet "EsupPortletSympa > Sympa Portlet" from the GUI of uPortal

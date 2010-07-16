@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	id="WebApp_ID" 
+	version="2.5">
+	<display-name>EsupPortletSympa</display-name>
+	<context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>esup-portlet-sympa</param-value>
+    </context-param>
+	<context-param>
+		<param-name>defaultHtmlEscape</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jExposeWebAppRoot</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:/log4j.properties</param-value>
+	</context-param>
+	<!-- Fichier de configuration Spring pour l'application web -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/context/applicationContext.xml</param-value>
+	</context-param>
+	<!-- Validation filter delegates to spring configuration in WEB-INF/context/applicationContext.jsp -->
+    <filter>
+        <filter-name>CAS Validation Filter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>ticketValidationFilter</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CAS Validation Filter</filter-name>
+        <url-pattern>/proxy/receptor</url-pattern>
+    </filter-mapping>
+	<!-- Listener pour le lancement de Spring au démarrage du contexte -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	
+	<!-- Servlet de rendu -->
+	<servlet>
+		<servlet-name>ViewRendererServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.ViewRendererServlet</servlet-class>
+		<!-- define where the jsps are stored -->
+		<init-param>
+			<param-name>viewRendererUrl</param-name>
+			<param-value>/WEB-INF/jsp</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- Mapping du rendu -->
+	<servlet-mapping>
+		<servlet-name>ViewRendererServlet</servlet-name>
+		<url-pattern>/WEB-INF/servlet/view</url-pattern>
+	</servlet-mapping>
+</web-app>
