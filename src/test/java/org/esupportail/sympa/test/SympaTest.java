@@ -40,15 +40,25 @@ public class SympaTest extends TestCase {
 		// force keeping cookie
 		((SOAPStub)port)._setProperty(HTTPConstants.HEADER_COOKIE,
 			    "sympa_session=" + cookie);
-
+		
 		System.out.println("port.checkCookie():" + port.checkCookie());
 		
-		String[] simpleWhich = port.which();
-		System.out.println(simpleWhich.length);
+		/* BUG 
+		 *    """org.xml.sax.SAXException:  No deserializer for {http://www.w3.org/2001/XMLSchema}anyType""" 
+		 * with Axis
+		 * so we use port.which() ...
 		ListType[] which = port.complexWhich();
 		System.out.println(which.length);
 		for ( ListType l : which ) {
 			System.out.printf("%1$s %2$s %3$s\n",l.getListAddress(),l.getSubject(),l.getHomepage());
+		}
+		*/
+		
+		String[] simpleWhich = port.which();
+		System.out.println("simpleWhich.length:" + simpleWhich.length);
+		
+		for(String list: simpleWhich) {
+			System.out.println("list:" + list);
 		}
 
 	}

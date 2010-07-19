@@ -1,21 +1,24 @@
 package org.esupportail.sympa.domain.services.sympa;
 
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.rpc.ServiceException;
 
 import org.apache.axis.transport.http.HTTPConstants;
 import org.esupportail.sympa.domain.model.UserSympaListWithUrl;
 import org.esupportail.sympa.domain.services.sympa.ICredentialRetriever.TYPE;
-import org.sympa.client.ws.axis.v544.ListType;
+import org.sympa.client.ws.axis.v544.SOAPStub;
 import org.sympa.client.ws.axis.v544.SympaPort_PortType;
 import org.sympa.client.ws.axis.v544.SympaSOAP;
 import org.sympa.client.ws.axis.v544.SympaSOAPLocator;
-import org.sympa.client.ws.axis.v544.SOAPStub;
 
 public class SympaServerAxisWsImpl extends AbstractSympaServer {
 	private int timeout = 5000;
@@ -42,9 +45,16 @@ public class SympaServerAxisWsImpl extends AbstractSympaServer {
 			return null;
 		}
 		// do the which
-		ListType[] whichList = null;
+		//ListType[] whichList = null;
+		String[] whichList = null;
 		try {
+			/* BUG 
+			 *    """org.xml.sax.SAXException:  No deserializer for {http://www.w3.org/2001/XMLSchema}anyType""" 
+			 * with Axis
+			 * so we use port.which() ... 
 			whichList = SympaPort_PortType.complexWhich();
+			*/
+			whichList = SympaPort_PortType.which();
 		} catch (RemoteException e) {
 			logger.error("complexWhich() failed !",e);
 			return null;
@@ -52,6 +62,7 @@ public class SympaServerAxisWsImpl extends AbstractSympaServer {
 		List<UserSympaListWithUrl> result = new ArrayList<UserSympaListWithUrl>();
 		if ( whichList != null ) {
 			for ( int idx = 0; idx < whichList.length; idx++ ) {
+				/*
 				ListType l = whichList[idx];
 				UserSympaListWithUrl item = new UserSympaListWithUrl();
 				item.setEditor(l.getIsEditor());
@@ -60,7 +71,19 @@ public class SympaServerAxisWsImpl extends AbstractSympaServer {
 				item.setAddress(l.getListAddress());
 				item.setHomepage(l.getHomepage());
 				item.setSubject(l.getSubject());
+				*/
+				String l = whichList[idx];
+				Map<String, String> listeInfos = this.stringToMap(l);
+				UserSympaListWithUrl item = new UserSympaListWithUrl();
+				item.setEditor(listeInfos.get("isEditor").equals("1"));
+				item.setOwner(listeInfos.get("isOwner").equals("1"));
+				item.setSubscriber(listeInfos.get("isSubscriber").equals("1"));
+				item.setAddress(listeInfos.get("listAddress"));
+				item.setHomepage(listeInfos.get("homepage"));
+				item.setSubject(listeInfos.get("subject"));
 				//  append various urls
+				
+				
 				item.setListUrl(generateListUrl(item.getHomepage()));
 				item.setListAdminUrl(generateListAdminUrl(item.getAddress()));
 				result.add(item);
@@ -133,5 +156,23 @@ public class SympaServerAxisWsImpl extends AbstractSympaServer {
 	public void setEndPointUrl(String endPointUrl) {
 		this.endPointUrl = endPointUrl;
 	}
+	
+	
+	protected static Map<String, String> stringToMap(String input) {  
+		Map<String, String> map = new HashMap<String, String>();  
+
+		String[] nameValuePairs = input.split(";");  
+		for (String nameValuePair : nameValuePairs) {  
+			String[] nameValue = nameValuePair.split("=");  
+			try {  
+				map.put(URLDecoder.decode(nameValue[0], "UTF-8"), nameValue.length > 1 ? URLDecoder.decode(  
+						nameValue[1], "UTF-8") : "");  
+			} catch (UnsupportedEncodingException e) {  
+				throw new RuntimeException("This method requires UTF-8 encoding support", e);  
+			}  
+		}  
+
+		return map;  
+	}  
 	
 }
