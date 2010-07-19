@@ -8,13 +8,14 @@ import java.util.List;
 
 import javax.xml.rpc.ServiceException;
 
+import org.apache.axis.transport.http.HTTPConstants;
 import org.esupportail.sympa.domain.model.UserSympaListWithUrl;
 import org.esupportail.sympa.domain.services.sympa.ICredentialRetriever.TYPE;
 import org.sympa.client.ws.axis.v544.ListType;
 import org.sympa.client.ws.axis.v544.SympaPort_PortType;
 import org.sympa.client.ws.axis.v544.SympaSOAP;
 import org.sympa.client.ws.axis.v544.SympaSOAPLocator;
-
+import org.sympa.client.ws.axis.v544.SOAPStub;
 
 public class SympaServerAxisWsImpl extends AbstractSympaServer {
 	private int timeout = 5000;
@@ -84,12 +85,16 @@ public class SympaServerAxisWsImpl extends AbstractSympaServer {
 		switch ( credsType ) {
 		case cas:
 			String tmp = port.casLogin(creds.getPassword());
+			((SOAPStub)port)._setProperty(HTTPConstants.HEADER_COOKIE,
+				    "sympa_session=" + tmp);
 			if ( logger.isDebugEnabled() ) {
 				logger.debug("CAS authentication ok : "+tmp);
 			}
 			break;
 		case password:
 			String tmp2 = port.login(creds.getId(), creds.getPassword());
+			((SOAPStub)port)._setProperty(HTTPConstants.HEADER_COOKIE,
+				    "sympa_session=" + tmp2);
 			if ( logger.isDebugEnabled() ) {
 				logger.debug("PASSWORD authentication ok : "+tmp2);
 			}

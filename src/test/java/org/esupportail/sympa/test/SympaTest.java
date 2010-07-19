@@ -5,10 +5,13 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
+import org.apache.axis.handlers.soap.SOAPService;
+import org.apache.axis.transport.http.HTTPConstants;
 import org.sympa.client.ws.axis.v544.ListType;
 import org.sympa.client.ws.axis.v544.SympaPort_PortType;
 import org.sympa.client.ws.axis.v544.SympaSOAP;
 import org.sympa.client.ws.axis.v544.SympaSOAPLocator;
+import org.sympa.client.ws.axis.v544.SOAPStub;
 
 public class SympaTest extends TestCase {
 
@@ -28,14 +31,15 @@ public class SympaTest extends TestCase {
 		
 		SympaSOAP locator = new SympaSOAPLocator();
 		((SympaSOAPLocator)locator).setMaintainSession(true); // mandatory for cookie after login
-
+		
 		URL sympaURL = new URL(testSympaUrl);
 		SympaPort_PortType port = locator.getSympaPort(sympaURL);
-		// set a timeout on port (10 seconds)
-		((org.apache.axis.client.Stub)port).setTimeout(10000);
 		
 		String cookie = port.login(testSympaUsername, testSympaPassword);
 		System.out.println("cookie:" + cookie);
+		// force keeping cookie
+		((SOAPStub)port)._setProperty(HTTPConstants.HEADER_COOKIE,
+			    "sympa_session=" + cookie);
 
 		System.out.println("port.checkCookie():" + port.checkCookie());
 		

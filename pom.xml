@@ -148,9 +148,6 @@
 				<artifactId>axistools-maven-plugin</artifactId>
 				<version>1.3</version>
 				<configuration>
-					<urls>
-						<url>http://demo.sympa.org/sympa/wsdl</url>
-					</urls>
 					<packageSpace>org.sympa.client.ws.axis.v544</packageSpace>
 					<namespaceToPackage>http://demo.sympa.org/sympa/wsdl=org.sympa.client.ws.axis.v544</namespaceToPackage>
 					<testCases>false</testCases>
