@@ -21,26 +21,42 @@ import org.sympa.client.ws.axis.v544.SympaSOAP;
 import org.sympa.client.ws.axis.v544.SympaSOAPLocator;
 
 public class SympaServerAxisWsImpl extends AbstractSympaServer {
+	
 	private int timeout = 5000;
+	
 	private String endPointUrl;
+	
+	// must be session scope so the bean of type SympaServerAxisWsImpl is session scope
+	private SympaPort_PortType port = null; 
 	
 	@Override
 	public List<UserSympaListWithUrl> getWhich() {
-		// first of all; get a fresh new port
-		SympaPort_PortType SympaPort_PortType = null;
-		try {
-			SympaPort_PortType = getPort();
-		} catch (MalformedURLException e) {
-			logger.error("unable to get a new SympaPort_PortType",e);
-			return null;
-		} catch (ServiceException e) {
-			logger.error("unable to get a new SympaPort_PortType",e);
-			return null;
-		} catch (RemoteException e) {
-			logger.error("unable to get a new SympaPort_PortType",e);
-			return null;
+		// first of all; get a fresh new port if needed
+		if(port!=null) {
+			try {
+				String checkCookie = port.checkCookie();
+				if(checkCookie == null || "nobody".equals(checkCookie))
+					port = null;
+			} catch (RemoteException e) {
+				logger.debug("port is no more usable, we reinitate it",e);
+				port = null;
+			}
 		}
-		if ( SympaPort_PortType == null ) {
+		if(port == null) {
+			try {
+				port = getPort();
+			} catch (MalformedURLException e) {
+				logger.error("unable to get a new SympaPort_PortType",e);
+				return null;
+			} catch (ServiceException e) {
+				logger.error("unable to get a new SympaPort_PortType",e);
+				return null;
+			} catch (RemoteException e) {
+				logger.error("unable to get a new SympaPort_PortType",e);
+				return null;
+			}
+		}
+		if (port == null ) {
 			logger.error("unable to get a new SympaPort_PortType");
 			return null;
 		}
@@ -54,7 +70,7 @@ public class SympaServerAxisWsImpl extends AbstractSympaServer {
 			 * so we use port.which() ... 
 			whichList = SympaPort_PortType.complexWhich();
 			*/
-			whichList = SympaPort_PortType.which();
+			whichList = port.which();
 		} catch (RemoteException e) {
 			logger.error("complexWhich() failed !",e);
 			return null;
@@ -156,6 +172,7 @@ public class SympaServerAxisWsImpl extends AbstractSympaServer {
 	public void setEndPointUrl(String endPointUrl) {
 		this.endPointUrl = endPointUrl;
 	}
+	
 	
 	
 	protected static Map<String, String> stringToMap(String input) {  

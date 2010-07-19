@@ -61,7 +61,8 @@
    	<util:map id="sympaServerList">
    	
    		<entry key="${liste.name}">
-   			<bean class="org.esupportail.sympa.domain.services.sympa.SpringCachingSympaServerAxisWsImpl">
+   			<bean class="org.esupportail.sympa.domain.services.sympa.SpringCachingSympaServerAxisWsImpl"
+   				  scope="session">
    				<property name="adminUrl" value="${liste.url}/net/admin/%l"/>
    				<property name="connectUrl" value="${cas.base.server.url}/login?service=%s%3Fchecked_cas=0"/>
    				<property name="name" value="${liste.name}"/>
