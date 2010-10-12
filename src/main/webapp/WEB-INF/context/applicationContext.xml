@@ -69,35 +69,35 @@
    		<value>ALL_EMPLOYEE</value>
    		<value>MEMBERS</value>
    	</util:set>
-   	<!-- sympa servers -->
-   	<util:map id="sympaServerList">
-   	
-   		<entry key="${liste.name}">
-   			<bean class="org.esupportail.sympa.domain.services.sympa.SpringCachingSympaServerAxisWsImpl"
-   				  scope="session">
-   				<property name="adminUrl" value="${liste.url}/net/admin/%l"/>
-   				<property name="connectUrl" value="${cas.base.server.url}/login?service=%s%3Fchecked_cas=0"/>
-   				<property name="name" value="${liste.name}"/>
-   				<property name="newListUrl" value="${liste.url}/net/create_list_request"/>
-   				<property name="homeUrl" value="${liste.url}/net"/>
-   				<property name="endPointUrl" value="${liste.soap.url}"/>
-   				<property name="timeout" value="5000"/>
-   				<property name="credentialRetriever" ref="${credentialRetriever}"/>
-   				<property name="indentityRetriever" ref="userIdentityRetrieverImpl"/>
-   				<property name="cacheManager" ref="cacheManager"/>
-   				<property name="newListForRoles">
-   					<set>
-   						<value>${group.newListForRoles}</value>
-   					</set>
-   				</property>
-   			</bean>
-   		</entry>
-   		
-   	</util:map>
    	
    	<!-- service -->
 	<bean id="domainService" class="org.esupportail.sympa.domain.services.DomainServiceImpl">
-		<property name="serverList" ref="sympaServerList"/>
+		<property name="serverList">
+			<map>
+				<entry key="${liste.name}">
+					<bean
+						class="org.esupportail.sympa.domain.services.sympa.SpringCachingSympaServerAxisWsImpl"
+						scope="session">
+						<property name="adminUrl" value="${liste.url}/net/admin/%l" />
+						<property name="connectUrl"
+							value="${cas.base.server.url}/login?service=%s%3Fchecked_cas=0" />
+						<property name="name" value="${liste.name}" />
+						<property name="newListUrl" value="${liste.url}/net/create_list_request" />
+						<property name="homeUrl" value="${liste.url}/net" />
+						<property name="endPointUrl" value="${liste.soap.url}" />
+						<property name="timeout" value="5000" />
+						<property name="credentialRetriever" ref="${credentialRetriever}" />
+						<property name="indentityRetriever" ref="userIdentityRetrieverImpl" />
+						<property name="cacheManager" ref="cacheManager" />
+						<property name="newListForRoles">
+							<set>
+								<value>${group.newListForRoles}</value>
+							</set>
+						</property>
+					</bean>
+				</entry>
+			</map>
+		</property>
 	</bean>
 	
 	<!-- helpers -->
