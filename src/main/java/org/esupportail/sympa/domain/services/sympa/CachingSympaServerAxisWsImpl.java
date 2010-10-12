@@ -45,7 +45,7 @@ public class CachingSympaServerAxisWsImpl extends SympaServerAxisWsImpl {
 		String cacheKey = String.format("%1$s;%2$s;%3$s", getName(),"getWhich",getIndentityRetriever().getId());
 		if ( logger.isDebugEnabled() ) logger.debug("cache key = "+cacheKey);
 		Object cached = getCachedValue(cacheKey);
-		if ( false ) return (List<UserSympaListWithUrl>)cached;
+		if (cached != null) return (List<UserSympaListWithUrl>)cached;
 		List<UserSympaListWithUrl> result = super.getWhich();
 		setCachedValue(cacheKey,result);
 		return result;
