@@ -71,7 +71,8 @@
    	</util:set>
    	
    	<!-- service -->
-	<bean id="domainService" class="org.esupportail.sympa.domain.services.DomainServiceImpl">
+	<bean id="domainService" class="org.esupportail.sympa.domain.services.DomainServiceImpl" scope="session">
+		<aop:scoped-proxy/>
 		<property name="serverList">
 			<map>
 				<entry key="${liste.name}">
