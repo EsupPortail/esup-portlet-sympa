@@ -1,3 +1,13 @@
+/**
+ * Copyright (C) 2010 INSA LYON http://www.insa-lyon.fr
+ * Copyright (C) 2010 Esup Portail http://www.esup-portail.org
+ * @Author (C) 2010 Olivier Franco <Olivier.Franco@insa-lyon.fr>
+ * @Contributor (C) 2010 Doriane Dusart <Doriane.Dusart@univ-valenciennes.fr>
+ * @Contributor (C) 2010 Vincent Bonamy <Vincent.Bonamy@univ-rouen.fr>
+ *
+ * Licensed under the GPL License, (please see the LICENCE file)
+ */
+
 package org.esupportail.sympa.domain.services.sympa;
 
 import java.util.List;
@@ -35,7 +45,7 @@ public class CachingSympaServerAxisWsImpl extends SympaServerAxisWsImpl {
 		String cacheKey = String.format("%1$s;%2$s;%3$s", getName(),"getWhich",getIndentityRetriever().getId());
 		if ( logger.isDebugEnabled() ) logger.debug("cache key = "+cacheKey);
 		Object cached = getCachedValue(cacheKey);
-		if ( cached != null ) return (List<UserSympaListWithUrl>)cached;
+		if ( false ) return (List<UserSympaListWithUrl>)cached;
 		List<UserSympaListWithUrl> result = super.getWhich();
 		setCachedValue(cacheKey,result);
 		return result;

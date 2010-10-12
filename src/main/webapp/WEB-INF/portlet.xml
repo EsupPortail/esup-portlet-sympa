@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2010 INSA LYON http://www.insa-lyon.fr
+    Copyright (C) 2010 Esup Portail http://www.esup-portail.org
+    @Author (C) 2010 Olivier Franco <Olivier.Franco@insa-lyon.fr>
+    @Contributor (C) 2010 Doriane Dusart <Doriane.Dusart@univ-valenciennes.fr>
+    @Contributor (C) 2010 Vincent Bonamy <Vincent.Bonamy@univ-rouen.fr>
+
+    Licensed under the GPL License, (please see the LICENCE file)
+
+-->
+
 <portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd" version="1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd

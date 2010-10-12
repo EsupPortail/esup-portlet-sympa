@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2010 INSA LYON http://www.insa-lyon.fr
+    Copyright (C) 2010 Esup Portail http://www.esup-portail.org
+    @Author (C) 2010 Olivier Franco <Olivier.Franco@insa-lyon.fr>
+    @Contributor (C) 2010 Doriane Dusart <Doriane.Dusart@univ-valenciennes.fr>
+    @Contributor (C) 2010 Vincent Bonamy <Vincent.Bonamy@univ-rouen.fr>
+
+    Licensed under the GPL License, (please see the LICENCE file)
+
+-->
+
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
     <!--
     DiskStore configuration
@@ -309,7 +321,7 @@
       	ttidle = durée de vie de l'élément si pas accéder pendant n seconde
        -->
 
-      <cache name="org.esupportail.sympa.domain.services.sympa.CachingSympaServerAxisWsImpl"
+    <cache name="org.esupportail.sympa.domain.services.sympa.CachingSympaServerAxisWsImpl"
      	maxElementsInMemory="100000"
      	eternal="false"
      	maxElementsOnDisk="10000000"

@@ -1,7 +1,8 @@
 
 * Modify config.properties
 
-* mvn install
+* mvn package 
+* or mvn -Dmaven.test.skip=true package
 
 * from uPortal directory : 
 ant deployPortletApp -DportletApp=/opt/canaux/esup-portlet-sympa/target/esup-portlet-sympa.war
