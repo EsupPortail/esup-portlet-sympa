@@ -4,6 +4,7 @@
  * @Author (C) 2010 Olivier Franco <Olivier.Franco@insa-lyon.fr>
  * @Contributor (C) 2010 Doriane Dusart <Doriane.Dusart@univ-valenciennes.fr>
  * @Contributor (C) 2010 Vincent Bonamy <Vincent.Bonamy@univ-rouen.fr>
+ * @Contributor (C) 2010 Jean-Pierre Tran <Jean-Pierre.Tran@univ-rouen.fr>
  *
  * Licensed under the GPL License, (please see the LICENCE file)
  */
