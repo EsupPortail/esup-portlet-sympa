@@ -8,9 +8,11 @@ import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.portlet.WindowState;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.esupportail.sympa.portlet.services.UserAgentInspector;
 import org.springframework.validation.BindException;
 import org.springframework.validation.Errors;
 import org.springframework.web.portlet.ModelAndView;
@@ -25,14 +27,21 @@ import org.springframework.web.portlet.mvc.AbstractCommandController;
  * Override 
  */
 public class ReentrantFormController extends AbstractCommandController {
+	
 	private Log logger = LogFactory.getLog(ReentrantFormController.class);
+	
 	private String viewName;
 	
+	protected UserAgentInspector userAgentInspector;
+	private final String ESUPSYMPA_WIDE_VIEW = "esupsympaWideView";
+	private final String ESUPSYMPA_NARROW_VIEW = "esupsympaNarrowView";
+	private final String ESUPSYMPA_MOBILE_VIEW = "esupsympaMobileView";
 	/* (non-Javadoc)
 	 * @see org.springframework.web.portlet.mvc.AbstractCommandController#handleRender(javax.portlet.RenderRequest, javax.portlet.RenderResponse, java.lang.Object, org.springframework.validation.BindException)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
+	
 	protected ModelAndView handleRender(RenderRequest request,
 			RenderResponse response, Object command, BindException errors)
 			throws Exception {
@@ -51,9 +60,20 @@ public class ReentrantFormController extends AbstractCommandController {
 		if (controlModel != null) {
 			model.putAll(controlModel);
 		}*/
-
 		// Trigger rendering of the specified view, using the final model.
-		return new ModelAndView(getViewName(), model);
+		//return new ModelAndView(getViewName(), model);
+		
+	    if(userAgentInspector.isMobile(request)) {
+	    	
+			return new ModelAndView(ESUPSYMPA_MOBILE_VIEW, model);
+	    } else {
+	    	WindowState state = request.getWindowState();
+			if (WindowState.MAXIMIZED.equals(state)) {
+				return new ModelAndView(ESUPSYMPA_WIDE_VIEW, model);
+			} else {
+				return new ModelAndView(ESUPSYMPA_NARROW_VIEW, model);
+			}
+	    }		
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -138,8 +158,8 @@ public class ReentrantFormController extends AbstractCommandController {
 	/**
 	 * @param viewName the viewName to set
 	 */
-	public void setViewName(String viewName) {
-		this.viewName = viewName;
+	public String setViewName(String viewName) {
+		return this.viewName = viewName;
 	}
 
 	@Override
@@ -151,5 +171,9 @@ public class ReentrantFormController extends AbstractCommandController {
 	public void handleActionRequest(ActionRequest request, ActionResponse response,
 			Object command, BindException bindException) throws Exception {
 		
+	}
+	
+	public void setUserAgentInspector(UserAgentInspector userAgentInspector) {
+		this.userAgentInspector = userAgentInspector;
 	}
 }
