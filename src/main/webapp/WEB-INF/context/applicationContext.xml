@@ -197,7 +197,23 @@
 	 <bean id="defaultMessageCodeResolver" class="org.springframework.validation.DefaultMessageCodesResolver">
 	 	<property name="prefix" value="validation."/>
 	 </bean>
+
 	 <!--  controllers -->
+
+	  <!--  userAgentInspector -->
+
+	  <bean id="userAgentInspector" class="org.esupportail.sympa.portlet.services.UserAgentInspector">
+	    <property name="userAgentMobile">
+		    <!-- Regexes of mobile device user agents -->
+		    <list>
+		        <value>.*iPhone.*</value>
+		        <value>.*Android.*</value>
+		        <value>.*Safari.*Pre.*</value>
+		        <value>.*Nokia.*AppleWebKit.*</value>
+		    </list>
+	    </property>
+	  </bean>
+
 	 <bean id="homeController" class="org.esupportail.sympa.portlet.web.controllers.HomeController">
 	 	<property name="viewName" value="home"/>
 	 	<property name="domainService" ref="domainService"/>
@@ -205,6 +221,7 @@
 	 	<property name="commandClass" value="org.esupportail.sympa.portlet.web.beans.HomeForm"/>
 	 	<property name="renderWhenMinimized" value="false"/>
 	 	<property name="commandName" value="searchForm"/>
+		<property name="userAgentInspector" ref="userAgentInspector"/>
 	 </bean>
 
 </beans>
