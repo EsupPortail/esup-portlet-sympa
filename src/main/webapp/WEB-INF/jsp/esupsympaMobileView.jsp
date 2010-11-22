@@ -4,8 +4,8 @@
     Copyright (C) 2010 Esup Portail http://www.esup-portail.org
     @Author (C) 2010 Olivier Franco <Olivier.Franco@insa-lyon.fr>
     @Contributor (C) 2010 Doriane Dusart <Doriane.Dusart@univ-valenciennes.fr>
-    @Contributor (C) 2010 Vincent Bonamy <Vincent.Bonamy@univ-rouen.fr>
     @Contributor (C) 2010 Jean-Pierre Tran <Jean-Pierre.Tran@univ-rouen.fr>
+    @Contributor (C) 2010 Vincent Bonamy <Vincent.Bonamy@univ-rouen.fr>
 
     Licensed under the GPL License, (please see the LICENCE file)
 
@@ -79,7 +79,7 @@
 			<ul>  
 				<li><span><spring:message code="list.name" htmlEscape="true"/></span> : <a class="esupsympaportletLink" href="<c:out value="${list.listUrl}" escapeXml="true"/>" target="_blank" title="<spring:message code="gotoList" arguments="${list.address}" htmlEscape="true"/>"><c:out value="${list.address}" escapeXml="true"/></a></li>
 				<li><span><spring:message code="list.subject" htmlEscape="true"/></span> : <c:out value="${list.subject}" escapeXml="true"/></li>
-				<li><span>Droits</span> : 
+				<li><span><spring:message code="list.rights" htmlEscape="true"/></span> : 
 				<c:if test="${list.subscriber==true}"><spring:message code="list.subscriber" htmlEscape="true"/> -</c:if>
 				<c:if test="${list.owner==true}"><spring:message code="list.owner" htmlEscape="true"/> - </c:if>
 				<c:if test="${list.editor==true}"><spring:message code="list.editor" htmlEscape="true"/></c:if>
