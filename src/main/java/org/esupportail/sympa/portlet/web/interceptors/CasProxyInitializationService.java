@@ -11,6 +11,8 @@
 
 package org.esupportail.sympa.portlet.web.interceptors;
 
+import java.util.Set;
+
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletResponse;
 import javax.portlet.PortletSession;
@@ -30,12 +32,21 @@ public class CasProxyInitializationService extends HandlerInterceptorAdapter {
 	private int sessionLength = 60*60*2;
 	private ICASProxyTicketService proxyTicketService;
 	
+	/**
+	 * this CasProxyInitializationService is used only if user in this roles (or if usedForRoles is null)
+	 */
+	private Set<String> usedForRoles;
+	
 	/* (non-Javadoc)
 	 * @see org.springframework.web.portlet.handler.HandlerInterceptorAdapter#preHandle(javax.portlet.PortletRequest, javax.portlet.PortletResponse, java.lang.Object)
 	 */
 	@Override
 	protected boolean preHandle(PortletRequest request,
 			PortletResponse response, Object handler) throws Exception {
+		
+		if(!this.shouldBeUsed())
+			return true;
+		
 		PortletSession session = request.getPortletSession();
 		String ticket = proxyTicketService.haveProxyTicket(request);
 		boolean doReceipt = false;
@@ -71,7 +82,27 @@ public class CasProxyInitializationService extends HandlerInterceptorAdapter {
 		
 		return true;
 	}
-
+	
+	/**
+	 * @return true if this server should be used for the current user (depending of usedForRoles) 
+	 */
+	public boolean shouldBeUsed() {
+		if(getUsedForRoles() == null)
+			return true;
+		
+		Set<String> userRoles = userPreferences.getUserRoles();
+		if ( userRoles != null && userRoles.size() > 0 ) {
+			logger.debug("user have roles");
+			for (String r : userRoles) {
+				logger.debug("having role : "+r);
+				if (getUsedForRoles().contains(r)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * @return the sessionLength
 	 */
@@ -112,6 +143,19 @@ public class CasProxyInitializationService extends HandlerInterceptorAdapter {
 	 */
 	public void setUserPreferences(UserPreferences userPreferences) {
 		this.userPreferences = userPreferences;
+	}
+
+	/**
+	 * @return the usedForRoles
+	 */
+	public Set<String> getUsedForRoles() {
+		return usedForRoles;
+	}
+	/**
+	 * @param usedForRoles the usedForRoles to set
+	 */
+	public void setUsedForRoles(Set<String> usedForRoles) {
+		this.usedForRoles = usedForRoles;
 	}
 
 }

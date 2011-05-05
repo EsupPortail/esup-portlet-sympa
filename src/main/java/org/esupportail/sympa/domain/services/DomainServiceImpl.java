@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,8 +34,7 @@ public class DomainServiceImpl implements IDomainService {
 	
 	public List<UserSympaListWithUrl> getWhich() {
 		// watchout; user centric ...
-		// TODO : show if user in role to view server
-		Collection<AbstractSympaServer> srvList = serverList.values();
+		Collection<AbstractSympaServer> srvList = getServerList().values();
 		List<UserSympaListWithUrl> result = new ArrayList<UserSympaListWithUrl>();
 		for ( AbstractSympaServer s : srvList ) {
 			List<UserSympaListWithUrl> srvResult = s.getWhich();
@@ -61,7 +61,7 @@ public class DomainServiceImpl implements IDomainService {
 	
 
 	public List<CreateListInfo> getCreateListInfo() {
-		Collection<AbstractSympaServer> srvList = serverList.values();
+		Collection<AbstractSympaServer> srvList = getServerList().values();
 		List<CreateListInfo> result = new ArrayList<CreateListInfo>();
 		for ( AbstractSympaServer s : srvList ) {
 			CreateListInfo infos = s.getCreateListInfo();
@@ -159,7 +159,14 @@ public class DomainServiceImpl implements IDomainService {
 	 * @return the serverList
 	 */
 	public Map<String, AbstractSympaServer> getServerList() {
-		return serverList;
+		Map<String, AbstractSympaServer> serverListToUse = new HashMap<String, AbstractSympaServer>();
+		for(String serverKey: serverList.keySet()) {
+			if(serverList.get(serverKey).shouldBeUsed()) {
+				logger.debug("Add this server to the list for the current user : " + serverKey);
+				serverListToUse.put(serverKey, serverList.get(serverKey));
+			}
+		}
+		return serverListToUse;
 	}
 
 	/**

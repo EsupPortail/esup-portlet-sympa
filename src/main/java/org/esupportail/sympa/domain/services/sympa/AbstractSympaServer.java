@@ -48,6 +48,11 @@ public abstract class AbstractSympaServer {
 	 * createListInfos available on if user in this roles
 	 */
 	private Set<String> newListForRoles;
+	/**
+	 * this server is used only if user in this roles (or if usedForRoles is null)
+	 */
+	private Set<String> usedForRoles;
+	
 	
 	private ICredentialRetriever credentialRetriever;
 	private IUserIdentityRetriever indentityRetriever;
@@ -149,6 +154,26 @@ public abstract class AbstractSympaServer {
 		return infos;
 	}
 	
+	/**
+	 * @return true if this server should be used for the current user (depending of usedForRoles) 
+	 */
+	public boolean shouldBeUsed() {
+		if(getUsedForRoles() == null)
+			return true;
+		
+		Set<String> userRoles = getIndentityRetriever().getRoles();
+		if ( userRoles != null && userRoles.size() > 0 ) {
+			logger.debug("user have roles");
+			for (String r : userRoles) {
+				logger.debug("having role : "+r);
+				if (getUsedForRoles().contains(r)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	protected String generateListUrl(String listHomepage) {
 		return generateConnectUrl(listHomepage);
 	}
@@ -211,4 +236,17 @@ public abstract class AbstractSympaServer {
 	public void setNewListForRoles(Set<String> newListForRoles) {
 		this.newListForRoles = newListForRoles;
 	}
+	/**
+	 * @return the usedForRoles
+	 */
+	public Set<String> getUsedForRoles() {
+		return usedForRoles;
+	}
+	/**
+	 * @param usedForRoles the usedForRoles to set
+	 */
+	public void setUsedForRoles(Set<String> usedForRoles) {
+		this.usedForRoles = usedForRoles;
+	}
+	
 }
