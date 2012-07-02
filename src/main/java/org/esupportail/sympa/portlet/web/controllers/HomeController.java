@@ -20,9 +20,11 @@ import javax.portlet.PortletRequest;
 
 import org.esupportail.sympa.domain.model.CreateListInfo;
 import org.esupportail.sympa.domain.model.UserSympaListWithUrl;
+import org.esupportail.sympa.domain.services.DomainServiceImpl;
 import org.esupportail.sympa.domain.services.IDomainService;
 import org.esupportail.sympa.domain.services.SympaListCriterion;
 import org.esupportail.sympa.domain.services.IDomainService.SympaListFields;
+import org.esupportail.sympa.domain.services.sympa.AbstractSympaServer;
 import org.esupportail.sympa.portlet.web.beans.HomeForm;
 import org.esupportail.web.portlet.mvc.ReentrantFormController;
 import org.springframework.validation.Errors;
@@ -31,6 +33,7 @@ import org.springframework.validation.Errors;
 public class HomeController extends ReentrantFormController {
 	
 	private IDomainService domainService;
+
 
 	@Override
 	public Object newCommand(PortletRequest request) throws Exception {
@@ -48,7 +51,9 @@ public class HomeController extends ReentrantFormController {
 		HomeForm form = (HomeForm)command;
 		List<UserSympaListWithUrl> sympaList = domainService.getWhich(formToCriterion(form),false);
 		List<CreateListInfo> createList = domainService.getCreateListInfo();
+		String homeUrl = domainService.getHomeUrl();
 		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("homeUrl",homeUrl);
 		map.put("sympaList", sympaList);
 		map.put("createList", createList);
 		return map;
