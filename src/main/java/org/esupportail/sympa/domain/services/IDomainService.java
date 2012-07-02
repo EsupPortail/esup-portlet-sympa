@@ -12,9 +12,11 @@
 package org.esupportail.sympa.domain.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.esupportail.sympa.domain.model.CreateListInfo;
 import org.esupportail.sympa.domain.model.UserSympaListWithUrl;
+import org.esupportail.sympa.domain.services.sympa.AbstractSympaServer;
 
 
 public abstract interface IDomainService {
@@ -27,4 +29,6 @@ public abstract interface IDomainService {
 	public List<UserSympaListWithUrl> getWhich();
 	public List<UserSympaListWithUrl> getWhich(List<SympaListCriterion>criterion,boolean mathAll);
 	public List<CreateListInfo> getCreateListInfo();
+	public Map<String, AbstractSympaServer> getServerList();
+	public String getHomeUrl();
 }

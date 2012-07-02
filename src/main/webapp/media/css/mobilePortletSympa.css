@@ -5,7 +5,19 @@ font-style:normal;
 color:black;
 padding-bottom:6px;
 }
-
+.esupsympaportlet-messages-mobile span#sympalink p{
+margin-left:12px;
+}
+.esupsympaportlet-messages-mobile span#sympalink p img{
+padding-right:.3em;	
+}
+.esupsympaportlet-messages-mobile span#sympalink p a{
+text-decoration:underline;
+color:#000088;
+}
+.esupsympaportlet-messages-mobile span#sympalink p a{
+color:#4444dd;
+}
 .esupsympaportlet-messages-mobile h3{
 border-bottom:0.1em solid #DDDDDD;
 padding-bottom:0.2em;
@@ -43,35 +55,32 @@ line-height:0.5em;
 .esupsympaportlet-messages-mobile  p span{
 font-size:0.7em;
 font-weight:bold;
-text-decoration: underline;
 }
 .esupsympaportlet-messages-mobile .portlet-form-button{
 text-align:center;
 width: 3.8em;
 background:#cfdcff;
 padding: 0 0.1em 0 0.1em;
+margin:1em 0 0 .2em;
 }
 .esupsympaportlet-messages-mobile .portlet-msg-alert{
 margin:0.2em 0.8em 0.2em 0.8em;
 }
-span.esupsympaportletresults{
+.esupsympaportlet-messages-mobile span.esupsympaportletresults{
 font-size:0.6em;
 color:red;
 text-indent:1em;
 }
-span.esupsympaportletresults p{
+.esupsympaportlet-messages-mobile span.esupsympaportletresults p{
 padding-top:0.5em;
 border-top:0.1em solid #DDDDDD;
 }
-p.alarmMobile{
+.esupsympaportlet-messages-mobile p.alarmMobile{
 font-weight:bold;
 color:red;
 text-indent: 12px;
 }
-a.esupsympaportletLink{
+.esupsympaportlet-messages-mobile a.esupsympaportletLink{
 text-decoration : underline;
 color:#2758B3;
-}
-a.sympaunderline{
-text-decoration:underline;	
 }

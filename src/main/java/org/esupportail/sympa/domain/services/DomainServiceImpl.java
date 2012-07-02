@@ -162,11 +162,21 @@ public class DomainServiceImpl implements IDomainService {
 		Map<String, AbstractSympaServer> serverListToUse = new HashMap<String, AbstractSympaServer>();
 		for(String serverKey: serverList.keySet()) {
 			if(serverList.get(serverKey).shouldBeUsed()) {
-				logger.debug("Add this server to the list for the current user : " + serverKey);
+				logger.debug("Add this server to the list for the current user : " + serverKey);		
 				serverListToUse.put(serverKey, serverList.get(serverKey));
 			}
 		}
 		return serverListToUse;
+	}
+
+	public String getHomeUrl() {
+		String homeUrl="#";
+		for(String serverKey: serverList.keySet()) {
+			if(serverList.get(serverKey).shouldBeUsed()) {
+				homeUrl=serverList.get(serverKey).getHomeUrl();			
+			}
+		}
+		return homeUrl;
 	}
 
 	/**
