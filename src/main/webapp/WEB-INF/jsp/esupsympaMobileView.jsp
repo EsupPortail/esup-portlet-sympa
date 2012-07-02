@@ -15,6 +15,7 @@
 
 <div class="esupsympaportlet-messages-mobile">
 <h3><spring:message code="title" htmlEscape="true"/></h3>
+<span id="sympalink"><p><img src="<%=request.getContextPath()%>/media/icons/application_go.png" /><a href="${homeUrl}" target="blank"><spring:message code="gotoSympa" htmlEscape="true"/></a></p></span>
 <c:set var="namespace"><portlet:namespace/></c:set>
 <portlet:actionURL var="actionURL">
 </portlet:actionURL>
@@ -68,7 +69,7 @@
 		</c:choose>
 		<label for="${namespace}_${status.expression}" class="portlet-form-field-label"><spring:message code="search.editor" htmlEscape="true"/></label>
 	</spring:bind>
-	<input type="submit" class="portlet-form-button" value="OK"/>
+	<p><input type="submit" class="portlet-form-button" value="OK"/></p>
 </form>
 <c:choose>
 
