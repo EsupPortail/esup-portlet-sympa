@@ -13,6 +13,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes.jsp" %>
 <h3 class="portlet-section-header"><spring:message code="title" htmlEscape="true"/></h3>
+<span id="sympalink"><p><img src="<%=request.getContextPath()%>/media/icons/application_go.png" /><a href="${homeUrl}" target="blank"><spring:message code="gotoSympa" htmlEscape="true"/></a></p></span>
 <c:set var="namespace"><portlet:namespace/></c:set>
 <portlet:actionURL var="actionURL">
 </portlet:actionURL>
