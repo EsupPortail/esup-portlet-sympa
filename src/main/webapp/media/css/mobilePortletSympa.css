@@ -1,86 +1,17 @@
-.esupsympaportlet-messages-mobile{
-width :100%;
-background:#FFF;
-font-style:normal;
-color:black;
-padding-bottom:6px;
+#navgroup {
+    text-align: center;
 }
-.esupsympaportlet-messages-mobile span#sympalink p{
-margin-left:12px;
+#navgroup fieldset {
+    display: inline;
 }
-.esupsympaportlet-messages-mobile span#sympalink p img{
-padding-right:.3em;	
+.ui-btn-text{
+text-shadow:none;
 }
-.esupsympaportlet-messages-mobile span#sympalink p a{
-text-decoration:underline;
-color:#000088;
+.ui-controlgroup-horizontal .ui-btn-inner {
+padding: 4px 6px;
 }
-.esupsympaportlet-messages-mobile span#sympalink p a{
-color:#4444dd;
-}
-.esupsympaportlet-messages-mobile h3{
-border-bottom:0.1em solid #DDDDDD;
-padding-bottom:0.2em;
-margin-bottom:0.5em;
-}
-.esupsympaportlet-messages-mobile ul{
-margin:1.1em;
-padding:0;
-background: url("/esup-portlet-sympa/media/icons/bullet_green.png") 0 0.2em no-repeat;
-}
-.esupsympaportlet-messages-mobile ul li{
-list-style-type: none;
-font-size:0.9em;
-line-height:1.6em;
-padding-left:1.2em;
-}
-.esupsympaportlet-messages-mobile ul li img{
-vertical-align:middle;
-}
-.esupsympaportlet-messages-mobile ul li span{
-font-weight:bold;
-color:#344461;
-}
-.esupsympaportlet-messages-mobile form{
-margin-bottom:0.5em;
-text-indent:0.8em;
-}
-.esupsympaportlet-messages-mobile form input{
-vertical-align:middle;	
-}
-.esupsympaportlet-messages-mobile .portlet-form-field-label{
-font-size: 0.5em;
-line-height:0.5em;
-}
-.esupsympaportlet-messages-mobile  p span{
-font-size:0.7em;
-font-weight:bold;
-}
-.esupsympaportlet-messages-mobile .portlet-form-button{
-text-align:center;
-width: 3.8em;
-background:#cfdcff;
-padding: 0 0.1em 0 0.1em;
-margin:1em 0 0 .2em;
-}
-.esupsympaportlet-messages-mobile .portlet-msg-alert{
-margin:0.2em 0.8em 0.2em 0.8em;
-}
-.esupsympaportlet-messages-mobile span.esupsympaportletresults{
-font-size:0.6em;
-color:red;
-text-indent:1em;
-}
-.esupsympaportlet-messages-mobile span.esupsympaportletresults p{
-padding-top:0.5em;
-border-top:0.1em solid #DDDDDD;
-}
-.esupsympaportlet-messages-mobile p.alarmMobile{
-font-weight:bold;
-color:red;
-text-indent: 12px;
-}
-.esupsympaportlet-messages-mobile a.esupsympaportletLink{
-text-decoration : underline;
-color:#2758B3;
+.ui-btn-active {
+    border: 1px solid rgb(35, 115, 165);
+	background: #4481BE!important;
+    color:white!important;
 }
