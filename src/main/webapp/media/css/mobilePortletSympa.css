@@ -1,17 +1,27 @@
-#navgroup {
-    text-align: center;
+.esup-portlet-sympa .ui-content{
+padding: 0!important;
+overflow: hidden;
 }
-#navgroup fieldset {
-    display: inline;
+.esup-portlet-sympa .ui-collapsible {
+margin: 0.5em 6px;
 }
-.ui-btn-text{
-text-shadow:none;
+.esup-portlet-sympa .ui-navbar {
+margin-bottom: 20px;
 }
-.ui-controlgroup-horizontal .ui-btn-inner {
+.esup-portlet-sympa #navgroup {
+text-align: center;
+}
+.esup-portlet-sympa #navgroup fieldset {
+display: inline;
+}
+.esup-portlet-sympa .ui-btn-text{
+text-shadow: none;
+}
+.esup-portlet-sympa .ui-controlgroup-horizontal .ui-btn-inner {
 padding: 4px 6px;
 }
-.ui-btn-active {
-    border: 1px solid rgb(35, 115, 165);
-	background: #4481BE!important;
-    color:white!important;
+.esup-portlet-sympa .ui-btn-active {
+border: 1px solid rgb(35, 115, 165);
+background: #4481BE!important;
+color: white!important;
 }
