@@ -16,13 +16,16 @@ import java.util.Set;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletResponse;
 import javax.portlet.PortletSession;
+import javax.portlet.WindowState;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.esupportail.sympa.domain.model.UserPreferences;
 import org.jasig.cas.client.validation.Assertion;
 import org.jasig.portlet.cas.ICASProxyTicketService;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.portlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.portlet.mvc.AbstractController;
 
 
 public class CasProxyInitializationService extends HandlerInterceptorAdapter {
@@ -43,6 +46,15 @@ public class CasProxyInitializationService extends HandlerInterceptorAdapter {
 	@Override
 	protected boolean preHandle(PortletRequest request,
 			PortletResponse response, Object handler) throws Exception {
+		
+
+		// No need to initialize CAS in MINIMIZED window state
+		if(ClassUtils.isAssignableValue(AbstractController.class, handler)) {
+			AbstractController controller = (AbstractController) handler;
+			if (WindowState.MINIMIZED.equals(request.getWindowState()) && !controller.isRenderWhenMinimized()) {
+                return false;
+			}
+		}
 		
 		if(!this.shouldBeUsed())
 			return true;
