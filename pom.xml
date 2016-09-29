@@ -192,6 +192,26 @@
 	  </includes>
 	</configuration>
       </plugin>
+      <plugin>
+        <groupId>org.lesscss</groupId>
+        <artifactId>lesscss-maven-plugin</artifactId>
+        <version>1.7.0.1.1</version>
+        <configuration>
+          <sourceDirectory>${project.basedir}/src/main/webapp/less</sourceDirectory>
+          <outputDirectory>${project.build.directory}/${project.build.finalName}/media/css</outputDirectory>
+          <compress>true</compress>
+          <includes>
+            <include>sympa-portlet.less</include>
+          </includes>
+        </configuration>
+        <executions>
+           <execution>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   

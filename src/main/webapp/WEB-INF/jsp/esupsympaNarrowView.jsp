@@ -13,7 +13,7 @@
 --%>
 
 <%@ include file="/WEB-INF/jsp/includes.jsp" %>
-
+<link href="<c:url value="/media/css/sympa-portlet.css"/>" type="text/css" rel="stylesheet"/>
 
 <style>
 
