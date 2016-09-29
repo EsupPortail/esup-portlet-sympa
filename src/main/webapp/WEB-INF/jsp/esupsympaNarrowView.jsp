@@ -112,7 +112,7 @@
 <div class="row">
 
 <!-- begin recia custom -->
-
+<!--
 <div class="col-xs-12 col-sm-12 col-md-12">
 <nav class="navbar navbar-default">
    <div class="container-fluid">
@@ -150,7 +150,7 @@
    </div>
 </nav>
 </div>
-
+-->
 <!-- end recia custom -->
 
 <h3 class="portlet-section-header"><span class="glyphicon glyphicon-envelope bg-primary" aria-hidden="true"></span> <spring:message code="title" htmlEscape="true"/></h3>
@@ -262,7 +262,7 @@
 </div>
 
 <!-- begin recia custom -->
-
+<!--
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reciaModal">
    Lancer la modale (demo)
 </button>
@@ -323,7 +323,7 @@
       </div>
    </div>
 </div>
-
+-->
 <!-- end recia custom -->
 
 </div>
