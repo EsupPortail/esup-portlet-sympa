@@ -1,6 +1,6 @@
 # Esup-portail Esup-Sympa
 
-This Java Portlet is a [Portlet][] of the [Esup-portail Community] and a [Community Portlet][] of [Apereo uPortal] ecosystem.
+This Java Portlet is a [Portlet][] of the [Esup-portail Community][] and a [Community Portlet][] of [Apereo uPortal][] ecosystem.
 
 The original version of Esup-Sympa [was written by][Sympa-portlet contributors] Oliver Franco of the INSA of Lyon. This JSR-168 portlet allows to display the Sympa mailing lists of a connected user for those he is: subscriber, Moderator or Owner. For each mailing list, a description, the user's rights and a url link to reach directly to the mailing-list User Interface in Sympa Application (if you have the right to) is provided.
 
@@ -16,7 +16,7 @@ Contributors  :
  * [Christian Cousquer][] - Université Pierre et Marie Curie- Sorbonne Université
 
 ## Version Notes
- * 4.5
+ * 5.0
 Specialy designed for `Apereo uPortal 4.3.1+ Respondr Theme` with Responsive Views in the portlet.
 The layout of the portlet is designed for mobile /tablet (single or multi-)column(s) /Desktop (single or multi-)column(s) layouts.
 Style in LESS

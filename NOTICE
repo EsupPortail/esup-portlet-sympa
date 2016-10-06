@@ -1,0 +1,71 @@
+Copyright (C) 2016 INSA LYON http://www.insa-lyon.fr
+Copyright (C) 2016 Esup Portail http://www.esup-portail.org
+@Author (C) 2016 Olivier Franco <Olivier.Franco@insa-lyon.fr>
+@Contributor (C) 2016 Doriane Dusart <Doriane.Dusart@univ-valenciennes.fr>
+@Contributor (C) 2016 Jean-Pierre Tran <Jean-Pierre.Tran@univ-rouen.fr>
+@Contributor (C) 2016 Vincent Bonamy <Vincent.Bonamy@univ-rouen.fr>
+@Contributor (C) 2016 Christian Cousquer <christian.cousquer@upmc.fr>
+
+ESUP-portail is a french academic project developed under the GPL (General Public License) augmented according to the following :
+    * A binary or source file developped by ESUP-portail can be used or compiled with products under Apache license.
+
+The official english text of the GPL can be found here : http://www.gnu.org/licenses/gpl.html.
+A non official french translation can be found here : http://www.linux-France.org/article/these/gpl.html.
+The different kinds of licenses governing the products developed by the Apache foundation can be found here : http://www.apache.org/licenses.
+It follows that you can as well as use download contents as well modify and redistribute them provided you respect the GPL terms.
+Downloading and using such contents do not provide any guaranty.
+Be sure that you have well understood the terms of the license before using the contents it covers.
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+For a current list of the dependencies of this project, please see the pom.xml included in this directory along with
+the other files included in this project. 
+
+This project includes:
+  AOP alliance under Public Domain
+  awesome-bootstrap-checkbox under MIT License
+  Axis Web Services under The Apache Software License, Version 2.0
+  axis-jaxrpc under Apache License, Version 2.0
+  axis-saaj under Apache License, Version 2.0
+  axis-wsdl4j under Apache License, Version 2.0
+  Code Generation Library under ASF 2.0
+  Discovery under Apache License, Version 2.0
+  EasyMock under MIT License
+  ehcache under The Apache Software License, Version 2.0
+  esup-commons-core under GNU General Public License
+  esup-commons-springmvc-portlet under GNU General Public License
+  esup-commons-web under GNU General Public License
+  esup-portlet-sympa under GNU General Public License
+  esup-uportal-ws-client under GNU General Public License
+  ICU4J under ICU License
+  JA-SIG CAS Client for Java - Core under JA-SIG License for Use
+  JavaBeans Activation Framework (JAF) under Common Development and Distribution License (CDDL) v1.0
+  JavaMail API under Sun Binary Code License
+  jdom under Apache style license
+  jsr168forwardport.org.springframework.web.portlet under Apache License, Version 2.0
+  jstl under Commons Development and Distribution License, Version 1.0
+  JUnit under Common Public License Version 1.0
+  log4j under Apache License, Version 2.0
+  Logging under The Apache Software License, Version 2.0
+  Pluto Portlet Tag Library under The Apache Software License, Version 2.0
+  Portlet API under Commons Development and Distribution License, Version 1.0
+  ROME, RSS and atOM utilitiEs for Java under The Apache Software License, Version 2.0
+  servlet-api under Commons Development and Distribution License, Version 1.0
+  SLF4J API Module under MIT License
+  SLF4J Simple Binding under MIT License
+  spring-aop under Apache License, Version 2.0
+  spring-asm under Apache License, Version 2.0
+  spring-beans under Apache License, Version 2.0
+  spring-context under Apache License, Version 2.0
+  spring-context-support under Apache License, Version 2.0
+  spring-core under Apache License, Version 2.0
+  spring-expression under Apache License, Version 2.0
+  spring-test under Apache License, Version 2.0
+  spring-web under Apache License, Version 2.0
+  spring-webmvc under Apache License, Version 2.0
+  standard under Apache License, Version 2.0
+  Xerces2 Java Parser under The Apache Software License, Version 2.0
+  XML Commons External Components XML APIs under The Apache Software License, Version 2.0
+

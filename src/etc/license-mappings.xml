@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<license-lookup xmlns="https://source.jasig.org/schemas/maven-notice-plugin/license-lookup" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://source.jasig.org/schemas/maven-notice-plugin/license-lookup https://source.jasig.org/schemas/maven-notice-plugin/license-lookup/license-lookup-v1.0.xsd">
+    <artifact>
+        <groupId>esup</groupId>
+        <artifactId>esup-uportal-ws-client</artifactId>
+        <version>20100915</version>
+	<license>GNU General Public License</license>
+    </artifact>
+    <artifact>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.9</version>
+	<license>Apache License, Version 2.0</license>
+    </artifact>
+    <artifact>
+        <groupId>org.apache.axis</groupId>
+        <artifactId>axis-saaj</artifactId>
+        <version>1.4</version>
+	<license>Apache License, Version 2.0</license>
+    </artifact>
+    <artifact>
+        <groupId>axis</groupId>
+        <artifactId>axis-wsdl4j</artifactId>
+        <version>1.5.1</version>
+	<license>Apache License, Version 2.0</license>
+    </artifact>
+    <artifact>
+        <groupId>org.esupportail.sympa</groupId>
+        <artifactId>esup-portlet-sympa</artifactId>
+        <version>5.0-SNAPSHOT</version>
+	<license>GNU General Public License</license>
+    </artifact>
+    <artifact>
+        <groupId>org.esupportail</groupId>
+        <artifactId>esup-commons2-core</artifactId>
+        <version>0.2.8</version>
+	<license>GNU General Public License</license>
+    </artifact>
+    <artifact>
+        <groupId>org.esupportail</groupId>
+        <artifactId>esup-commons2-web</artifactId>
+        <version>0.2.8</version>
+	<license>GNU General Public License</license>
+    </artifact>
+    <artifact>
+        <groupId>org.esupportail</groupId>
+        <artifactId>esup-commons2-springmvc-portlet</artifactId>
+        <version>0.2.8</version>
+	<license>GNU General Public License</license>
+    </artifact>
+         
+    <artifact>
+        <groupId>org.springframework</groupId>
+        <artifactId>jsr168forwardport.org.springframework.web.portlet</artifactId>
+        <version>2.5.6.SEC01</version>
+	<license>Apache License, Version 2.0</license>
+    </artifact>
+    <artifact>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.5.8</version>
+	<license>MIT License</license>
+    </artifact>
+    <artifact>
+        <groupId>commons-discovery</groupId>
+        <artifactId>commons-discovery</artifactId>
+        <version>0.2</version>
+	<license>Apache License, Version 2.0</license>
+    </artifact>
+    <artifact>
+        <groupId>org.webjars.bower</groupId>
+        <artifactId>awesome-bootstrap-checkbox</artifactId>
+        <version>0.3.7</version>
+	<license>MIT License</license>
+    </artifact>
+    <artifact>
+        <groupId>org.jasig.portlet</groupId>
+        <artifactId>FeedbackPortlet.src.main.webapp.less.theme</artifactId>
+        <version>1.0.0</version>
+        <license>Apache License, Version 2.0</license>
+    </artifact>
+    <artifact>
+        <groupId>org.jasig.portlet</groupId>
+        <artifactId>FeedbackPortlet.src.main.webapp.less.portlet-grid</artifactId>
+        <version>0.7</version>
+        <license>Apache License, Version 2.0</license>
+    </artifact>
+    <artifact>
+        <groupId>org.jasig.portlet</groupId>
+        <artifactId>FeedbackPortlet.src.main.webapp.less.table-reflow</artifactId>
+        <version>1.0.0</version>
+        <license>Apache License, Version 2.0</license>
+    </artifact>
+</license-lookup>
