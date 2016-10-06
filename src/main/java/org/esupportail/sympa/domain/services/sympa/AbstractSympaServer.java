@@ -1,14 +1,20 @@
 /**
- * Copyright (C) 2010 INSA LYON http://www.insa-lyon.fr
- * Copyright (C) 2010 Esup Portail http://www.esup-portail.org
- * @Author (C) 2010 Olivier Franco <Olivier.Franco@insa-lyon.fr>
- * @Contributor (C) 2010 Doriane Dusart <Doriane.Dusart@univ-valenciennes.fr>
- * @Contributor (C) 2010 Jean-Pierre Tran <Jean-Pierre.Tran@univ-rouen.fr>
- * @Contributor (C) 2010 Vincent Bonamy <Vincent.Bonamy@univ-rouen.fr>
+ * Licensed to ESUP-Portail under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
  *
- * Licensed under the GPL License, (please see the LICENCE file)
+ * ESUP-Portail licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-
 package org.esupportail.sympa.domain.services.sympa;
 
 import java.io.UnsupportedEncodingException;
