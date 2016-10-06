@@ -207,10 +207,12 @@
 	    <property name="userAgentMobile">
 		    <!-- Regexes of mobile device user agents -->
 		    <list>
+                        <!--
 		        <value>.*iPhone.*</value>
 		        <value>.*Android.*</value>
 		        <value>.*Safari.*Pre.*</value>
 		        <value>.*Nokia.*AppleWebKit.*</value>
+                        -->
 		    </list>
 	    </property>
 	  </bean>

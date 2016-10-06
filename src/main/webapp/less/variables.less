@@ -1,0 +1,45 @@
+/**
+ * Licensed to Apereo under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work
+ * for additional information regarding copyright ownership.
+ * Apereo licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file
+ * except in compliance with the License.  You may obtain a
+ * copy of the License at the following location:
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+/*---------------------------------------------------
+    Portlet-grid Mixin   variables
+  ---------------------------------------------------*/
+@index : 1 ; /* RED: Do not change: use for increment loop */
+@namespace : sympa-portlet ; /* GREEN: the namescape class of the portlet, if you want to use the mixin for another portlet */
+@cols  : 7, 6, 5, 4, 3, 2 ; /* ORANGE: the bootstrap col-md-X of portlet-column class: .portal-page-column.col-md-X */
+@col  : extract(@cols, @index) ;
+@container-fluid : 1; /* WIP: Do not change for the moment and put container-fluid class on top of the portlet */ 
+@col-md-breackpoint : 6 ; /* GREEN: "css breakpoint" within the portlet possible value can be : 1,2,3,4,5,6,7,8,9,10,11: use .bootstrap-style-by-TheValue class on top of the portlet */
+@portletbreackpoint : @col-md-breackpoint ; /* RED: Do not change: WIP */
+
+/*---------------------------------------------------
+    Table-refow Mixin   variables
+  ---------------------------------------------------*/
+@background:#fff; 
+@color:black;
+@border-color:#ccc;
+@table-reflow-max-width:760px;
+@th-width-mobile:110px; /* ORANGE table falsy css header width on  mobile or multi-column layout */
+@min-width:0px;
+@max-width:768px; /* RED css breakpoint to stop the reflow */
+@table-result-striped-background-color:#f9f9f9;
+/*---------------------------------------------------
+    Sympa skin   variables
+  ---------------------------------------------------*/
+@color1: #337AB7; /* Should be the main color of your custom uPortal Respondr Theme (@color1) or your custom uPortal Respondr Theme link color */

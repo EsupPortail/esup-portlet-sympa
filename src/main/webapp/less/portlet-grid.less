@@ -1,0 +1,182 @@
+/**
+ * Licensed to Apereo under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work
+ * for additional information regarding copyright ownership.
+ * Apereo licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file
+ * except in compliance with the License.  You may obtain a
+ * copy of the License at the following location:
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+/*---------------------------------------------------
+    PORTLET GRID Mixin   | version: 0.7
+  ---------------------------------------------------
+    A mixin to reflow Bootstrap Classes and to create
+    a "css breackpoint" within the portlet Grid in 
+    Desktop Multi columns Layout
+  ---------------------------------------------------*/
+
+
+.grid( @name; @columns; @col-md-breackpoint; @index: 1) when (@index =< @columns) {
+    .grid(@name; @columns; @col-md-breackpoint; (@index + 1));
+
+     & when ( @container-fluid  = 0 ) {
+        .row {
+           margin-left: -20px;
+           margin-right: 0;
+        }
+     }
+
+    .@{name}-@{index} {
+
+      & when ( @container-fluid  = 1 ) {
+
+        /* When the portlet have ".container-fluid" Class */
+
+            & when ( @index < @portletbreackpoint ) {
+                width: ( percentage(@index / @portletbreackpoint ));
+                float: left;
+            }
+
+
+            & when ( @index >= @portletbreackpoint ) {
+               width: ( percentage(1));
+               float: left;
+               clear:both;
+            }
+            
+        }
+
+      & when ( @container-fluid  = 0 ) {
+
+        /* Work In Progress (WIP) for .container Bootstrap Class (not .container-fluid) */
+
+            & when ( @index < @portletbreackpoint ) {
+
+               & when ( percentage(@index / @columns * @columns / @portletbreackpoint / 12 * @col-md-breackpoint ) < 50% ) {
+                  width: ( percentage(@index / @columns * @columns / (@portletbreackpoint) / 12 * @col-md-breackpoint ) - percentage(0.026) );
+                  float: left;
+               }
+
+               & when ( percentage(@index / @columns * @columns / @portletbreackpoint / 12 * @col-md-breackpoint ) < 32% ) {
+                  width: ( percentage(@index / @columns * @columns / (@portletbreackpoint) / 12 * @col-md-breackpoint ) - percentage(0.02) );
+                  float: left;
+               }
+
+               & when ( percentage(@index / @columns * @columns / @portletbreackpoint / 12 * @col-md-breackpoint ) < 24% ) {
+                  width: ( percentage(@index / @columns * @columns / (@portletbreackpoint) / 12 * @col-md-breackpoint ) - percentage(0.013));
+                  float: left;
+               }
+
+            }
+
+            & when ( @index >= @portletbreackpoint ) {
+               width: ( percentage(0.5) - percentage(@portletbreackpoint / 3 * 2 / 100) );
+               float: left;
+               clear:both;
+            }
+
+         /* end WIP */
+            
+        }
+
+       /* Mobile Styles in desktop multi-column layout begin */
+       /* BEGIN: When you want complex components behave like mobile on desktop multi-columns layout in uPortal: put your mobile less styles here */
+        
+        .navbar-header {
+           float: none;
+        }
+        .sympa-logo {
+           display: block;
+        }
+        .navbar-toggle {
+           display: block;
+        }
+        .navbar-collapse.collapse {
+           display: none !important;
+           height: auto!important;
+           padding-bottom: inherit;;
+           overflow: visible!important;
+        }
+        .navbar-collapse, .navbar-header {
+           margin-right: -15px;
+           margin-left: -15px;
+        }
+        .navbar-collapse.collapse.in {
+           display: block !important;
+           height: auto!important;
+           padding-bottom: inherit;;
+           overflow: visible!important;
+        }
+        .navbar-nav {
+           float: none;
+           margin: inherit;
+        }
+
+        .navbar-nav > li {
+           float: none;
+        }
+        .navbar-nav .dropdown-menu {
+           min-width: 100%;
+        }
+        table.reflow {
+            max-width: @table-reflow-max-width;
+        }
+        table.sympa-result {
+            display: block;
+        }
+        table.reflow.sympa-result thead,
+        table.reflow.sympa-result tbody,
+        table.reflow.sympa-result th,
+        table.reflow.sympa-result td,
+        table.reflow.sympa-result tr {
+            display: block;
+        }
+        table.reflow.sympa-result thead tr {
+            border: 1px solid @border-color;
+            left: -9999px;
+            position: absolute;
+            top: -9999px;
+        }
+        table.reflow.sympa-result tbody tr {
+            border: 1px solid @border-color;
+        }
+        table.reflow.sympa-result tbody tr:not(.bottom) td {
+            padding-left: 110px;
+        }
+        table.reflow.sympa-result tbody tr td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid lighten(@border-color, 10%);
+            position: relative;
+            word-wrap: break-word;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        table.reflow.sympa-result tbody tr td:before {
+            /* Top/left values mimic padding */
+            left: 6px;
+            padding-right: 10px;
+            /* Now like a table header */
+            position: absolute;
+            top: 6px;
+            width: 100px;
+            white-space: nowrap;
+        }
+
+        table.reflow.sympa-result td:nth-of-type(3) { text-align: left; }
+        table.reflow.sympa-result td:nth-of-type(4) { text-align: left; }
+        table.reflow.sympa-result td:nth-of-type(5) { text-align: left; }
+
+    /* END: Mobile Styles in desktop multi-column layout end */
+    }  
+}

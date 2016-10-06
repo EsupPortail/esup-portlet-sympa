@@ -4,14 +4,10 @@
 <c:url var="iconPath" scope="page" value="/media/icons/"/>
 <c:choose>
 	<c:when test="${value == true}">
-		<c:url var="iconURL" value="/media/icons/stock_ok.png"/>
-		<spring:message code="yes" htmlEscape="true" var="iconAlt"/>
+             <span class="glyphicon glyphicon-ok-circle" style="color:#5cb85c;" aria-label="<spring:message code='yes' htmlEscape='true'/>" title="<spring:message code='yes' htmlEscape='true'/>" tabindex="0"></span>
 	</c:when>
 	<c:otherwise>
-		<c:url var="iconURL" value="/media/icons/gtk-stop.png"/>
-		<spring:message code="no" htmlEscape="true" var="iconAlt"/>
+             <span class="glyphicon glyphicon-remove-circle" style="color:#d9534f;" aria-label="<spring:message code='no' htmlEscape='true'/>" title="<spring:message code='no' htmlEscape='true'/>" tabindex="0"></span>
 	</c:otherwise>
 </c:choose>
-<img src="<c:out value="${iconURL}" escapeXml="true"/>" alt="<c:out value="${iconAlt}"/>"/>
-<c:remove var="iconURL"/>
-<c:remove var="iconAlt"/>
+
