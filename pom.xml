@@ -9,6 +9,69 @@
   <name>esup-portlet-sympa</name>
   <version>5.0-SNAPSHOT</version>
 
+  <description>EsupSympa is a JSR 168 portlet that allows to display Sympa (http://www.sympa.org) mailing-lists.</description>
+  <url>https://www.esup-portail.org/wiki/display/PROJCANSYMPA/ESUP-Sympa</url>
+
+  <organization>
+      <name>EsupPortail</name>
+      <url>https://www.esup-portail.org</url>
+  </organization>
+  <licenses>
+      <license>
+          <name>Apache License, Version 2.0</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+      </license>
+  </licenses>
+
+  <developers>
+      <developer>
+          <name>Olivier Franco</name>
+          <organization>INSA de Lyon</organization>
+      </developer>
+  </developers>
+  <contributors>
+      <contributor>
+          <name>Doriane Dusart</name>
+          <organization>Université de Valenciennes</organization>          
+      </contributor>
+      <contributor>
+          <name>Christian Cousquer</name>
+          <organization>Université Pierre et Marie Curie- Sorbonne Université</organization>          
+      </contributor>                  
+      <contributor>
+          <name>Jean-Pierre Tran</name>
+          <organization>Université de Rouen</organization>
+      </contributor>
+      <contributor>
+          <name>Vincent Bonamy</name>
+          <organization>Université de Rouen</organization>
+      </contributor>
+      <contributor>
+          <name>Olivier Salaün</name>
+          <organization>Renater</organization>
+      </contributor>
+      <contributor>
+          <name>Claude Viéville</name>
+          <organization>Université de Lille1</organization>          
+      </contributor>
+      <contributor>
+          <name>Jean-Claude Vergerolle</name>
+          <organization>Université de Bordeaux</organization>          
+      </contributor>
+  </contributors>
+
+  <mailingLists>
+      <mailingList>
+          <name>esup-utilisateurs@esup-portail.org</name>
+          <subscribe>https://listes.esup-portail.org/sympa/info/esup-utilisateurs</subscribe>
+          <archive>https://listes.esup-portail.org/sympa/arc/esup-utilisateurs</archive>
+      </mailingList>
+  </mailingLists>
+
+  <scm>
+      <url>https://github.com/EsupPortail/esup-portlet-sympa</url>
+  </scm>
+
   <repositories>
     <repository>
       <id>esup-snapshots</id>
@@ -31,6 +94,17 @@
       </releases>
     </repository>
   </repositories>
+
+  <distributionManagement>
+      <snapshotRepository>
+          <id>ossrh</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      </snapshotRepository>
+      <repository>
+          <id>ossrh</id>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      </repository>
+  </distributionManagement>
   
   <dependencies>
     
@@ -240,6 +314,67 @@
           </execution>
         </executions>
       </plugin>
+
+         <plugin>
+             <groupId>org.sonatype.plugins</groupId>
+             <artifactId>nexus-staging-maven-plugin</artifactId>
+             <version>1.6.7</version>
+             <extensions>true</extensions>
+             <configuration>
+                 <serverId>ossrh</serverId>
+                 <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                 <autoReleaseAfterClose>false</autoReleaseAfterClose>
+             </configuration>
+         </plugin>
+
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-gpg-plugin</artifactId>
+             <version>1.6</version>
+             <executions>
+                 <execution>
+                     <id>sign-artifacts</id>
+                     <phase>verify</phase>
+                     <goals>
+                         <goal>sign</goal>
+                     </goals>
+                 </execution>
+             </executions>
+         </plugin>
+
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-source-plugin</artifactId>
+             <version>2.2.1</version>
+             <executions>
+                 <execution>
+                     <id>attach-sources</id>
+                     <goals>
+                         <goal>jar-no-fork</goal>
+                     </goals>
+                 </execution>
+             </executions>
+         </plugin>
+
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-jar-plugin</artifactId>
+             <version>3.0.2</version>
+             <executions>
+                 <execution>
+                     <goals>
+                         <goal>jar</goal>
+                     </goals>
+                     <configuration>
+                         <classifier>classes</classifier>
+                         <includes>
+                             <include>**/*</include>
+                         </includes>
+                     </configuration>
+                 </execution>
+             </executions>
+         </plugin>
+      
     </plugins>
   </build>
 
