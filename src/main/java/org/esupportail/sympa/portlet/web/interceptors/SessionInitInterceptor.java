@@ -50,10 +50,11 @@ public class SessionInitInterceptor extends HandlerInterceptorAdapter {
 			@SuppressWarnings("unchecked")
 			Map<String,String> userinfo = (Map<String,String>)request.getAttribute(PortletRequest.USER_INFO);
 			String mail = userinfo.get(getUserInfoMailAttr());
-			if ( mail != null ) 
+			if ( mail != null ) {
 				mail = mail.trim();
-			if ( mail.length() > 0 ) {
-				userPreferences.setMail(mail);
+				if ( mail.length() > 0 ) {
+					userPreferences.setMail(mail);
+				}
 			}
 			// retrieve roles
 			Set<String> userRoles = new HashSet<String>();
